@@ -1634,3 +1634,28 @@ footer a {
     transform: none !important;
   }
 }
+
+@media (max-width: 480px) {
+  .fake-stats {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 60px;
+  }
+  .fake-stats div {
+    width: auto;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 14px;
+  }
+  .portrait-stamp {
+    position: absolute;
+    right: 23px;
+    bottom: -15px;
+    background: var(--yellow);
+    padding: 14px 12px;
+    font: 700 10px / 1.1 var(--display);
+    transform: rotate(14deg);
+    box-shadow: 8px 8px 0 #11111a;
+  }
+}
+
