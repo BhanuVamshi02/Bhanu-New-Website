@@ -1659,3 +1659,39 @@ footer a {
   }
 }
 
+.menu-inner nav a {
+  gap: 40px;
+}
+
+@media (max-width: 800px) {
+  .menu-inner nav a {
+    font-size: 6vw;
+    grid-template-columns: 35px 1fr 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-inner nav a {
+    font-size: 8vw;
+  }
+}
+
+@media (max-width: 500px) {
+  .menu-inner nav a {
+    font-size: 8vw;
+    gap: 20px;
+  }
+  .hero-anime {
+    right: 7vw;
+    top: 8vh;
+  }
+}
+
+@media (max-width: 400px) {
+  .menu-inner nav a {
+    font-size: 8.5vw;
+    gap: 10px;
+  }
+}
+
+
