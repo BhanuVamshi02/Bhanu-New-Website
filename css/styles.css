@@ -307,12 +307,7 @@ button {
   border-radius: 50%;
   border-color: rgba(255, 215, 94, 0.35);
 }
-.hero-copy {
-  position: relative;
-  z-index: 2;
-  width: min(1050px, 100%);
-  margin-right: auto;
-}
+
 .eyebrow,
 .section-kicker,
 .film-kicker {
@@ -1393,6 +1388,52 @@ footer a {
   opacity: 0;
   transform: translateY(30px);
 }
+
+
+.hero-anime {
+  position: absolute;
+
+  width: min(36vw, 520px);
+  height: min(36vw, 520px);
+
+  right: 7vw;
+  top: 12vh;
+
+  border-radius: 50%;
+  overflow: hidden;
+
+  background: #1b1728;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  box-shadow:
+    0 0 80px rgba(139, 108, 255, 0.35),
+    0 0 160px rgba(255, 79, 160, 0.15);
+
+  z-index: 2;
+}
+
+.hero-anime img {
+  width: 100%;
+  height: 100%;
+  display: block;
+
+  object-fit: cover;
+  object-position: center center;
+
+  transform: scale(1.02);
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 3;
+
+  width: min(1050px, 100%);
+  max-width: 58vw;
+
+  margin-left: 0;
+  margin-right: auto;
+}
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -1446,37 +1487,7 @@ footer a {
     padding: 100px 6vw;
     align-items: end;
   }
-.hero-anime {
-  position: absolute;
-  width: min(38vw, 560px);
-  height: min(38vw, 560px);
-  right: 7vw;
-  top: 12vh;
 
-  border-radius: 50%;
-  overflow: hidden;
-
-  background: #1b1728;
-
-  border: 1px solid rgba(255, 255, 255, 0.18);
-
-  box-shadow:
-    0 0 80px rgba(139, 108, 255, 0.35),
-    0 0 160px rgba(255, 79, 160, 0.15);
-
-  z-index: 1;
-}
-
-.hero-anime img {
-  width: 100%;
-  height: 100%;
-  display: block;
-
-  object-fit: cover;
-  object-position: center center;
-
-  transform: scale(1.02);
-}
   .hero h1 {
     font-size: clamp(68px, 22vw, 120px);
   }
