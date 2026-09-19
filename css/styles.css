@@ -229,7 +229,7 @@ button {
   position: absolute;
   inset: 0;
 
-  background-image: url("../assets/Anime-banner-img.png");
+  background-image: url("../asset/Anime-banner-img.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
