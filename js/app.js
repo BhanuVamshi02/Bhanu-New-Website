@@ -163,23 +163,85 @@ function renderSkills() {
     }),
   );
 }
+
 function initTrailer() {
   const panel = $("#trailerPanel");
-  $("#playTrailer").addEventListener("click", () => {
-    panel.classList.toggle("show");
-    if (
-      state.data?.creative?.trailerUrl &&
-      state.data.creative.trailerUrl !== "[TRAILER URL]"
-    ) {
-      panel.innerHTML = `<video controls playsinline style="width:100%;display:block" src="${state.data.creative.trailerUrl}"></video>`;
-      panel.classList.add("show");
+
+  function getYouTubeEmbedUrl(url) {
+    try {
+      const parsed = new URL(url);
+
+      // Standard YouTube URL:
+      // https://www.youtube.com/watch?v=dWSJwBlc-R4
+      if (parsed.hostname.includes("youtube.com")) {
+        const videoId = parsed.searchParams.get("v");
+
+        if (videoId) {
+          return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+        }
+      }
+
+      // YouTube short URL:
+      // https://youtu.be/dWSJwBlc-R4
+      if (parsed.hostname === "youtu.be") {
+        const videoId = parsed.pathname.substring(1);
+
+        if (videoId) {
+          return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+        }
+      }
+    } catch (e) {
+      console.warn("Invalid YouTube URL:", url);
     }
-  });
+
+    return null;
+  }
+
+  function playTrailer() {
+    const trailerUrl = state.data?.creative?.trailerUrl;
+
+    if (!trailerUrl || trailerUrl === "[TRAILER URL]") {
+      panel.classList.toggle("show");
+      return;
+    }
+
+    const embedUrl = getYouTubeEmbedUrl(trailerUrl);
+
+    if (!embedUrl) {
+      panel.innerHTML = `
+        <div>
+          <span>TRAILER SOURCE</span>
+          <strong>INVALID YOUTUBE URL</strong>
+        </div>
+      `;
+      panel.classList.add("show");
+      return;
+    }
+
+    panel.innerHTML = `
+      <iframe
+        src="${embedUrl}"
+        title="The AI Cinema Trailer"
+        style="width:100%; aspect-ratio:16/9; display:block; border:0;"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    `;
+
+    panel.classList.add("show");
+  }
+
+  $("#playTrailer").addEventListener("click", playTrailer);
+
   $("#againBtn").addEventListener("click", () => {
     location.hash = "cinema";
-    setTimeout(() => $("#playTrailer").click(), 500);
+
+    setTimeout(() => {
+      playTrailer();
+    }, 500);
   });
 }
+
 function initEggs() {
   let seq = [],
     code = [
