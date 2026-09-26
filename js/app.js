@@ -176,14 +176,14 @@ function initTrailer() {
       const url = state.data.creative.trailerUrl;
 
       panel.innerHTML = `
-        <div class="trailer-frame">
+        <div class="trailer-frame" style="height:265px">
           <iframe
             src="${url}"
             title="Bhanu Vamshi — AI Cinema Trailer"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen>
+            allowfullscreen style="width:100%,height:100%">
           </iframe>
         </div>
       `;
